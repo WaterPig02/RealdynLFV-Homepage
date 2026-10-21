@@ -1,0 +1,15 @@
+{
+  "name": "RealDynLFV",
+  "title": "A Large-Parallax Benchmark for Real-World Dynamic Light Field Video",
+  "conference": "IEEE VCIP 2026",
+  "status": "Accepted",
+  "overview": "RealDynLFV is a benchmark for real-world dynamic light field video with large parallax. It brings together dynamic scenes captured across 5 × 5 synchronized camera views, supporting research in light field video processing and interpolation.",
+  "availability": "The benchmark dataset and accompanying resources are being prepared for release. Availability updates will be provided on this project page.",
+  "stats": [["45", "Scene sequences"], ["5 × 5", "25 camera views"], ["1920 × 1080", "Image resolution"], ["60 FPS", "Nominal frame rate"]],
+  "resources": [{"label":"Paper", "status":"Coming soon", "url":null}, {"label":"Dataset", "status":"Under preparation", "url":null}, {"label":"Code", "status":"Under preparation", "url":null}],
+  "gallery": [{"title":"Center view", "spec":"Representative scene · 1920 × 1080 still", "src":null,"alt":""}, {"title":"Across viewpoints", "spec":"Matched frame · 5 × 5 contact sheet", "src":null,"alt":""}, {"title":"Parallax in focus", "spec":"Synchronized views · labeled comparison", "src":null,"alt":""}, {"title":"Scenes in motion", "spec":"Short MP4 · poster and description", "src":null,"alt":""}, {"title":"Camera array", "spec":"Real capture setup · annotated photograph", "src":null,"alt":""}],
+  "releases": [],
+  "authors": null,
+  "citation": null,
+  "license": null
+}

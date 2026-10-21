@@ -1,0 +1,7 @@
+__pycache__/
+node_modules/
+*.zip
+evidence/
+docs/REVIEW.md
+docs/ORIGINAL-README.md
+scripts/test.cjs
