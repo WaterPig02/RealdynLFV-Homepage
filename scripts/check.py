@@ -22,4 +22,5 @@ ratios={}
 for fg,bg in [('142c32','f9faf6'),('4d6369','f9faf6'),('17655f','f9faf6'),('ffffff','142c32'),('516c62','edf1ed'),('3b5750','eaf0eb'),('435d54','e8efea')]:
  a,b=sorted([lum(fg),lum(bg)]);ratio=(b+.05)/(a+.05);assert ratio>=4.5;ratios[fg+'/'+bg]=round(ratio,2)
 r={'html_links_assets':'pass','unique_ids':'pass','factual_guardrails':'pass','runtime_javascript':'none','contrast_ratios':ratios,'runtime_bytes':sum((root/f).stat().st_size for f in ['index.html','assets/style.css','assets/favicon.svg'])}
+(root/'evidence').mkdir(exist_ok=True)
 (root/'evidence/static-results.json').write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))
