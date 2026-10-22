@@ -3,13 +3,102 @@
   "title": "A Large-Parallax Benchmark for Real-World Dynamic Light Field Video",
   "conference": "IEEE VCIP 2026",
   "status": "Accepted",
-  "overview": "RealDynLFV is a benchmark for real-world dynamic light field video with large parallax. It brings together dynamic scenes captured across 5 × 5 synchronized camera views, supporting research in light field video processing and interpolation.",
+  "overview": "RealDynLFV is a large-parallax benchmark for real-world dynamic light field video. It comprises 45 dynamic scene sequences recorded from a 5 \u00d7 5 camera array. Camera recordings are temporally aligned in post-processing using audio signals; the cameras are not hardware-synchronized.",
   "availability": "The benchmark dataset and accompanying resources are being prepared for release. Availability updates will be provided on this project page.",
-  "stats": [["45", "Scene sequences"], ["5 × 5", "25 camera views"], ["1920 × 1080", "Image resolution"], ["60 FPS", "Nominal frame rate"]],
-  "resources": [{"label":"Paper", "status":"Coming soon", "url":null}, {"label":"Dataset", "status":"Under preparation", "url":null}, {"label":"Code", "status":"Under preparation", "url":null}],
-  "gallery": [{"title":"Center view", "spec":"Representative scene · 1920 × 1080 still", "src":null,"alt":""}, {"title":"Across viewpoints", "spec":"Matched frame · 5 × 5 contact sheet", "src":null,"alt":""}, {"title":"Parallax in focus", "spec":"Synchronized views · labeled comparison", "src":null,"alt":""}, {"title":"Scenes in motion", "spec":"Short MP4 · poster and description", "src":null,"alt":""}, {"title":"Camera array", "spec":"Real capture setup · annotated photograph", "src":null,"alt":""}],
+  "stats": [
+    [
+      "45",
+      "Scene sequences"
+    ],
+    [
+      "5 \u00d7 5",
+      "25 camera views"
+    ],
+    [
+      "1920 \u00d7 1080",
+      "Image resolution"
+    ],
+    [
+      "60 FPS",
+      "Nominal frame rate"
+    ]
+  ],
+  "resources": [
+    {
+      "label": "Paper",
+      "status": "Publication pending",
+      "url": null
+    },
+    {
+      "label": "Dataset",
+      "status": "Under preparation",
+      "url": null
+    },
+    {
+      "label": "Code",
+      "status": "Under preparation",
+      "url": null
+    }
+  ],
+  "gallery": [
+    {
+      "title": "Real-world scenes",
+      "spec": "Representative center-view frames",
+      "description": "A selection of authentic scene appearances from the current benchmark.",
+      "kind": "image",
+      "src": null,
+      "alt": "",
+      "poster": null,
+      "approved": false
+    },
+    {
+      "title": "One moment, multiple views",
+      "spec": "Time-aligned multi-view comparison",
+      "description": "Views of the same scene at a matched time after audio-based alignment.",
+      "kind": "image",
+      "src": null,
+      "alt": "",
+      "poster": null,
+      "approved": false
+    },
+    {
+      "title": "Large parallax",
+      "spec": "Labeled viewpoint comparison",
+      "description": "A real example showing how scene appearance changes across viewpoints.",
+      "kind": "image",
+      "src": null,
+      "alt": "",
+      "poster": null,
+      "approved": false
+    },
+    {
+      "title": "Dynamic scenes",
+      "spec": "Short scene excerpt",
+      "description": "An approved short clip showing scene motion; not a release of source video.",
+      "kind": "video",
+      "src": null,
+      "alt": "",
+      "poster": null,
+      "approved": false
+    },
+    {
+      "title": "Capture setup",
+      "spec": "Camera-array photograph",
+      "description": "A real equipment photograph with a confirmed caption.",
+      "kind": "image",
+      "src": null,
+      "alt": "",
+      "poster": null,
+      "approved": false
+    }
+  ],
   "releases": [],
   "authors": null,
   "citation": null,
-  "license": null
+  "license": null,
+  "alignment": "Audio-based temporal alignment in post-processing",
+  "validated_tasks": "The benchmark has been evaluated for light field video reconstruction and coding. Detailed evaluation settings and results will be presented with the paper and accompanying resources.",
+  "potential_tasks": "Light field video interpolation is a potential application. It is distinct from the reconstruction and coding tasks evaluated in the current work.",
+  "overview_note": "Conservative project summary based on currently confirmed facts. Pending author review against the full paper; not the formal abstract.",
+  "benchmark_intro": "The current benchmark supports evaluation of light field video reconstruction and coding. The sequence-level split is shown below. Interpolation is a potential research application, not a reported evaluation result."
 }

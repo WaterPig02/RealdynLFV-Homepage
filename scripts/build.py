@@ -10,18 +10,29 @@ def link(url):
     return e(url)
 c['stats_html'] = ''.join(f'<div class="stat"><strong>{e(v)}</strong><span>{e(k)}</span></div>' for v,k in c['stats'])
 c['resources_html'] = ''.join(f'<a class="resource" href="{link(r["url"])}">{e(r["label"])} <span>Available ↗</span></a>' if r['url'] else f'<div class="resource">{e(r["label"])}<span>{e(r["status"])}</span></div>' for r in c['resources'])
-def media(g,i):
+def local_asset(value):
+    p = pathlib.Path(value)
+    if p.is_absolute() or '..' in p.parts or not (ROOT/p).is_file():
+        raise ValueError('Media must be an existing local asset')
+    return e(value)
+
+def media(g, i):
     if g['src']:
-        p = pathlib.Path(g['src'])
-        if p.is_absolute() or '..' in p.parts or not (ROOT/p).is_file() or not g['alt']: raise ValueError('Media needs a safe existing local file and alt text')
-        visual = f'<img src="{e(g["src"])}" alt="{e(g["alt"])}" loading="lazy">'
+        if not g.get('approved') or not g['alt']:
+            raise ValueError('Media requires publication approval and a text description')
+        src = local_asset(g['src'])
+        if g.get('kind') == 'video':
+            poster = f' poster="{local_asset(g["poster"])}"' if g.get('poster') else ''
+            visual = f'<video controls preload="none" playsinline{poster} aria-label="{e(g["alt"])}"><source src="{src}" type="video/mp4">{e(g["alt"])}</video>'
+        else:
+            visual = f'<img src="{src}" alt="{e(g["alt"])}" loading="lazy">'
     else:
-        visual = f'<div class="placeholder" aria-hidden="true"><span class="frame-mark">{i+1:02}</span><span>REAL MEDIA PENDING</span></div>'
-    return f'<figure>{visual}<figcaption><h3>{e(g["title"])}</h3><p>{e(g["spec"])}</p></figcaption></figure>'
+        visual = f'<div class="placeholder"><span class="frame-mark" aria-hidden="true">{i+1:02}</span><span>Awaiting approved media</span></div>'
+    return f'<figure>{visual}<figcaption><p class="media-type">{e(g["spec"])}</p><h3>{e(g["title"])}</h3><p>{e(g["description"])}</p></figcaption></figure>'
 c['gallery_html'] = ''.join(media(g,i) for i,g in enumerate(c['gallery']))
 c['views_html'] = ''.join(f'<span class="view {"center" if i==12 else ""}">{"C" if i==12 else ""}</span>' for i in range(25))
 c['authors_html'] = f'<p>{e(c["authors"])}</p>' if c['authors'] else ''
-c['citation_html'] = f'<pre>{e(c["citation"])}</pre>' if c['citation'] else '<h3>Citation coming soon</h3><p>Verified publication metadata and BibTeX will be added here when available.</p>'
+c['citation_html'] = f'<pre>{e(c["citation"])}</pre>' if c['citation'] else '<h3>Citation coming soon</h3><p>The paper has been accepted at IEEE VCIP 2026. Publication details are pending; verified citation metadata will be added when available.</p>'
 c['license_html'] = e(c['license'] or 'Dataset license to be confirmed.')
 c['releases_html'] = ''.join(f'<li>{e(r["version"])} · <a href="{link(r["url"])}">{e(r["label"])}</a></li>' for r in c['releases'])
 t = (ROOT/'template.html').read_text()
