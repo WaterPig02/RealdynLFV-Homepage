@@ -6,7 +6,7 @@ The benchmark dataset and accompanying resources are being prepared for release.
 
 ## Preview and build
 
-Python 3 is sufficient; no framework, runtime JavaScript, external fonts or package installation is needed.
+Python 3 is sufficient; no framework, external fonts or package installation is needed. A small optional script remembers the selected language.
 
 ```sh
 python3 scripts/build.py
@@ -23,7 +23,8 @@ Open http://127.0.0.1:8000/ on the same computer. Stop the server with Ctrl+C.
 - `assets/`: responsive CSS, favicon and future approved media.
 - `scripts/build.py`: escaped, dependency-free static renderer.
 - `scripts/check.py`: baseline checks for the current unreleased state.
-- `index.html`: generated page; rebuild after source changes.
+- `index.html` / `zh.html`: complete generated English/Chinese pages; rebuild after source changes.
+- `assets/language.js`: language switch and local preference, preserving the current section.
 - `.nojekyll`: serve generated static files directly on GitHub Pages.
 - `docs/DEPLOYMENT.md`: hosting and maintenance notes.
 
@@ -33,6 +34,10 @@ A resource with a null `url` renders an availability label. Set a verified HTTPS
 
 Set `authors`, `citation` and `license` only from confirmed metadata and permissions. The current overview is not the formal paper abstract. Do not invent publication details or results.
 
-For approved still images, place web-sized derivatives under `assets/`, set the gallery item's relative `src` path and provide meaningful `alt` text. Keep master data outside this repository. The current renderer supports still images. A future video should use a native `<video controls preload="none" poster="...">` element in the template with a description and captions when needed. Do not insert MP4 files into image slots.
+For approved still images, place web-sized derivatives under `assets/`, set the gallery item's relative `src` path and provide meaningful `alt` text. Keep master data outside this repository. Set `approved` to true only after publication permission is confirmed. Use `kind: "image"` for stills or `kind: "video"` for an MP4 clip, with an optional local `poster`. Videos use native controls, no autoplay and no preload. The required `alt` field supplies the image alternative or video description; add captions in the template if speech is present. Leave unapproved or missing assets unset. Gallery captions are configured through `title`, `spec` and `description`.
 
 All assets use relative paths, supporting both root and project subdirectory hosting without a hardcoded account name. After editing, rebuild, run checks and inspect desktop/mobile layouts. The static checker deliberately rejects external resource links in the current unreleased preview; update that assertion when approved resources become available.
+
+## Languages
+
+English is the default. The header links switch between English and Chinese. Manual choices are stored in localStorage when available. Without JavaScript or storage access, both static pages and their language links remain usable. Translations live in the `zh` mapping in content.json, keyed by English text; keep new or edited content in sync and verify both generated pages. The formal English paper title is intentionally retained in Chinese.
