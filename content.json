@@ -3,7 +3,7 @@
   "title": "A Large-Parallax Benchmark for Real-World Dynamic Light Field Video",
   "conference": "IEEE VCIP 2026",
   "status": "Accepted",
-  "overview": "RealDynLFV is a large-parallax benchmark for real-world dynamic light field video. It comprises 45 dynamic scene sequences recorded from a 5 \u00d7 5 camera array. Camera recordings are temporally aligned in post-processing using audio signals; the cameras are not hardware-synchronized.",
+  "overview": "RealDynLFV is a large-parallax benchmark for real-world dynamic light field video, comprising 45 dynamic scene sequences recorded from a 5 \u00d7 5 camera array.",
   "availability": "The benchmark dataset and accompanying resources are being prepared for release. Availability updates will be provided on this project page.",
   "stats": [
     [
@@ -74,7 +74,7 @@
     {
       "title": "Dynamic scenes",
       "spec": "Short scene excerpt",
-      "description": "An approved short clip showing scene motion; not a release of source video.",
+      "description": "Scene motion across a short light field video excerpt.",
       "kind": "video",
       "src": null,
       "alt": "",
@@ -84,7 +84,7 @@
     {
       "title": "Capture setup",
       "spec": "Camera-array photograph",
-      "description": "A real equipment photograph with a confirmed caption.",
+      "description": "The camera array used to record multiple viewpoints.",
       "kind": "image",
       "src": null,
       "alt": "",
@@ -96,9 +96,9 @@
   "authors": null,
   "citation": null,
   "license": null,
-  "alignment": "Audio-based temporal alignment in post-processing",
-  "validated_tasks": "The benchmark has been evaluated for light field video reconstruction and coding. Detailed evaluation settings and results will be presented with the paper and accompanying resources.",
-  "potential_tasks": "Light field video interpolation is a potential application. It is distinct from the reconstruction and coding tasks evaluated in the current work.",
+  "alignment": "Camera recordings are temporally aligned in post-processing using audio signals, rather than hardware synchronization",
+  "validated_tasks": "Light field video reconstruction and coding are the evaluated tasks in the current benchmark.",
+  "potential_tasks": "The combination of dynamic scenes and multiple viewpoints also offers a basis for exploring light field video interpolation.",
   "overview_note": "Conservative project summary based on currently confirmed facts. Pending author review against the full paper; not the formal abstract.",
-  "benchmark_intro": "The current benchmark supports evaluation of light field video reconstruction and coding. The sequence-level split is shown below. Interpolation is a potential research application, not a reported evaluation result."
+  "benchmark_intro": "The benchmark provides a sequence-level training, validation and test split for light field video reconstruction and coding."
 }

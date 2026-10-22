@@ -27,12 +27,12 @@ def media(g, i):
         else:
             visual = f'<img src="{src}" alt="{e(g["alt"])}" loading="lazy">'
     else:
-        visual = f'<div class="placeholder"><span class="frame-mark" aria-hidden="true">{i+1:02}</span><span>Awaiting approved media</span></div>'
+        visual = f'<div class="placeholder"><span class="frame-mark" aria-hidden="true">{i+1:02}</span></div>'
     return f'<figure>{visual}<figcaption><p class="media-type">{e(g["spec"])}</p><h3>{e(g["title"])}</h3><p>{e(g["description"])}</p></figcaption></figure>'
 c['gallery_html'] = ''.join(media(g,i) for i,g in enumerate(c['gallery']))
 c['views_html'] = ''.join(f'<span class="view {"center" if i==12 else ""}">{"C" if i==12 else ""}</span>' for i in range(25))
 c['authors_html'] = f'<p>{e(c["authors"])}</p>' if c['authors'] else ''
-c['citation_html'] = f'<pre>{e(c["citation"])}</pre>' if c['citation'] else '<h3>Citation coming soon</h3><p>The paper has been accepted at IEEE VCIP 2026. Publication details are pending; verified citation metadata will be added when available.</p>'
+c['citation_html'] = f'<pre>{e(c["citation"])}</pre>' if c['citation'] else '<h3>Citation coming soon</h3><p>Publication details are pending. Citation metadata will follow.</p>'
 c['license_html'] = e(c['license'] or 'Dataset license to be confirmed.')
 c['releases_html'] = ''.join(f'<li>{e(r["version"])} · <a href="{link(r["url"])}">{e(r["label"])}</a></li>' for r in c['releases'])
 t = (ROOT/'template.html').read_text()

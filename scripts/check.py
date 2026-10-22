@@ -16,7 +16,7 @@ assert '{{' not in text
 for t in ['225,775','165.9','1920 × 1080','60 FPS','Accepted','not publicly available','Citation coming soon']:assert t in text
 for t in ['Published','CC BY-NC','Paper ID','doi.org']:assert t not in text
 assert not re.search(r'<script\b',text)
-for t in ['audio signals', 'not hardware-synchronized', 'Reconstruction &amp; coding', 'POTENTIAL APPLICATION', 'Publication details are pending']: assert t in text
+for t in ['audio signals', 'rather than hardware synchronization', 'Reconstruction &amp; coding', 'POTENTIAL APPLICATION', 'Publication details are pending']: assert t in text
 assert '5 × 5 synchronized' not in text
 def lum(h):
  c=[int(h[i:i+2],16)/255 for i in (0,2,4)];return sum((v/12.92 if v<=.04045 else ((v+.055)/1.055)**2.4)*w for v,w in zip(c,[.2126,.7152,.0722]))
