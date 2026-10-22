@@ -25,12 +25,17 @@ def media(g, i):
             poster = f' poster="{local_asset(g["poster"])}"' if g.get('poster') else ''
             visual = f'<video controls preload="none" playsinline{poster} aria-label="{e(g["alt"])}"><source src="{src}" type="video/mp4">{e(g["alt"])}</video>'
         else:
-            visual = f'<img src="{src}" alt="{e(g["alt"])}" loading="lazy">'
+            visual = f'<a class="image-preview" href="{src}" data-image-preview><img src="{src}" alt="{e(g["alt"])}" loading="lazy"><span class="preview-hint">View image ↗</span></a>'
     else:
         visual = f'<div class="placeholder"><span class="frame-mark" aria-hidden="true">{i+1:02}</span></div>'
     return f'<figure>{visual}<figcaption><p class="media-type">{e(g["spec"])}</p><h3>{e(g["title"])}</h3><p>{e(g["description"])}</p></figcaption></figure>'
 c['gallery_html'] = ''.join(media(g,i) for i,g in enumerate(c['gallery']))
 c['views_html'] = ''.join(f'<span class="view {"center" if i==12 else ""}">{"C" if i==12 else ""}</span>' for i in range(25))
+hero = c.get('hero_media')
+if hero and hero.get('src'):
+    c['hero_html'] = '<div class="hero-visual">' + media(hero, 0) + '</div>'
+else:
+    c['hero_html'] = '<figure class="hero-visual"><div class="view-array" aria-hidden="true">' + c['views_html'] + '</div><figcaption><strong>5 × 5 views</strong><span>Conceptual array layout · not a scene image</span></figcaption></figure>'
 c['authors_html'] = f'<p>{e(c["authors"])}</p>' if c['authors'] else ''
 c['citation_html'] = f'<pre>{e(c["citation"])}</pre>' if c['citation'] else '<h3>Citation coming soon</h3><p>Publication details are pending. Citation metadata will follow.</p>'
 c['license_html'] = e(c['license'] or 'Dataset license to be confirmed.')
@@ -49,6 +54,7 @@ zh = re.sub(r'>([^<>]+)<', translate_match, out)
 zh = zh.replace('lang="en"', 'lang="zh-CN"', 1)
 for key, value in c['zh'].items():
     zh = zh.replace('aria-label="' + e(key) + '"', 'aria-label="' + e(value) + '"')
+    zh = zh.replace('alt="' + e(key) + '"', 'alt="' + e(value) + '"')
     zh = zh.replace('content="' + e(key) + '"', 'content="' + e(value) + '"')
 zh = zh.replace('href="zh.html" lang="zh-CN" hreflang="zh-CN" data-language="zh">中文', 'href="index.html" lang="en" hreflang="en" data-language="en">EN')
 (ROOT/'zh.html').write_text(zh)

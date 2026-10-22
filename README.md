@@ -41,3 +41,9 @@ All assets use relative paths, supporting both root and project subdirectory hos
 ## Languages
 
 English is the default. The header links switch between English and Chinese. Manual choices are stored in localStorage when available. Without JavaScript or storage access, both static pages and their language links remain usable. Translations live in the `zh` mapping in content.json, keyed by English text; keep new or edited content in sync and verify both generated pages. The formal English paper title is intentionally retained in Chinese.
+
+### Hero and image previews
+
+The hero displays a labeled conceptual 5 × 5 array by default. To replace it with an approved equipment photograph, set `hero_media` in `content.json` to an object with `src`, `alt`, `approved: true`, `kind: "image"`, `spec`, `title`, and `description`, following a gallery entry. Add Chinese translations of these strings to `zh`. Keep `hero_media: null` until an approved photograph is available.
+
+Approved images use uncropped `object-fit: contain` previews. Hover or keyboard focus gently enlarges the preview; activation opens a native modal with a close button, Escape handling and focus restoration. Touch users tap to view. Reduced-motion users get no scaling animation. Empty slots remain non-interactive. Without JavaScript, image links open the original local image. Videos retain native controls.
