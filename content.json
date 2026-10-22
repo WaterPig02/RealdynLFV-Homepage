@@ -190,8 +190,14 @@
     "Scenes, views and motion.": "场景、视角与运动。",
     "Visual examples will be added here.": "此处预留可视化示例。",
     "04 / RESOURCES": "04 / 项目资源",
-    "Resources & citation": "资源与引用"
+    "Resources & citation": "资源与引用",
+    "5 × 5 views": "5 × 5 视角",
+    "Conceptual array layout · not a scene image": "阵列布局示意 · 非场景图像",
+    "View image ↗": "查看图片 ↗",
+    "Image preview": "图片预览",
+    "Close preview": "关闭预览"
   },
   "value_statement": "A real-world benchmark for dynamic light field video with large parallax.",
-  "research_context": "Multiple viewpoints and scene motion provide a shared setting for studying light field video processing."
+  "research_context": "Multiple viewpoints and scene motion provide a shared setting for studying light field video processing.",
+  "hero_media": null
 }
