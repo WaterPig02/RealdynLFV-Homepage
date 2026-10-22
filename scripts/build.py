@@ -39,3 +39,17 @@ t = (ROOT/'template.html').read_text()
 out = re.sub(r'{{(\w+)}}',lambda m: str(c[m[1]]) if m[1].endswith('_html') else e(c[m[1]]),t)
 (ROOT/'index.html').write_text(out)
 print('Built index.html')
+
+# Both language pages are complete static documents; no client-side text replacement.
+def translate_match(match):
+    text = html.unescape(match.group(1))
+    key = text.strip()
+    return '>' + (html.escape(c['zh'][key]) if key in c['zh'] else match.group(1)) + '<'
+zh = re.sub(r'>([^<>]+)<', translate_match, out)
+zh = zh.replace('lang="en"', 'lang="zh-CN"', 1)
+for key, value in c['zh'].items():
+    zh = zh.replace('aria-label="' + e(key) + '"', 'aria-label="' + e(value) + '"')
+    zh = zh.replace('content="' + e(key) + '"', 'content="' + e(value) + '"')
+zh = zh.replace('href="zh.html" lang="zh-CN" hreflang="zh-CN" data-language="zh">中文', 'href="index.html" lang="en" hreflang="en" data-language="en">EN')
+(ROOT/'zh.html').write_text(zh)
+print('Built zh.html')
